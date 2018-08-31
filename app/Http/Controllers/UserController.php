@@ -69,7 +69,7 @@ class UserController extends Controller
         $user->knowledge_of_languages = (int)$request->knowledge_of_languages;
         $user->save();
 
-        if ( count($request->projects[0]) > 0 ) {
+        if ( !empty($request->projects[0]) && \count($request->projects) > 0 ) {
             $user->projects()->sync($request->projects);
         }
 
@@ -187,7 +187,7 @@ class UserController extends Controller
                 'time_management' => (int)$request->time_management,
                 'knowledge_of_languages' => (int)$request->knowledge_of_languages,
             ]);
-            if ( count($request->projects[0]) > 0 ) {
+            if ( !empty($request->projects[0]) && \count($request->projects) > 0 ) {
                 $user = User::findOrFail($request->user_id);
                 $user->projects()->sync($request->projects);
                 $user->save();
