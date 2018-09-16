@@ -157,9 +157,9 @@ class UserController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required|max:255',
                 'sociability' => 'min:1|max:10',
-                'engineering_skill' => 'min:1|max:10',
-                'time_management' => 'min:1|max:10',
-                'knowledge_of_languages' => 'min:1|max:10',
+                'engineering_skill' => 'integer|between:1,10',
+                'time_management' => 'integer|between:1,10',
+                'knowledge_of_languages' => 'integer|between:1,10',
             ]);
             if ($validator->fails()) {
                 $error_text = '';
